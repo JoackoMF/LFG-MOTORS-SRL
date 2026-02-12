@@ -1,4 +1,4 @@
-/* LFG MOTORS SRL - CSS OPTIMIZADO */
+/* LFG MOTORS SRL - CSS OPTIMIZADO Y CORREGIDO */
 
 /* === RESET & BASE === */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -107,20 +107,38 @@ animation:heroFloat 20s ease-in-out infinite}
 /* === PRODUCTS GRID === */
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px}
 .products-grid-full{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
-.product-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);transition:all var(--transition-base);cursor:pointer;position:relative}
+.product-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);transition:all var(--transition-base);cursor:pointer;position:relative;display:flex;flex-direction:column}
 .product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
-.product-image{position:relative;width:100%;height:240px;background:var(--gray-lighter);overflow:hidden;display:block}
-.product-image img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.5s ease}
+
+/* AJUSTE PARA IMÁGENES UNIFORMES Y VISIBLES */
+.product-image{
+    position:relative;
+    width:100%;
+    height:250px; /* Altura fija para que todas sean iguales */
+    background:var(--gray-lighter);
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover; /* Ajuste perfecto sin deformar */
+    object-position:center;
+    transition:transform 0.5s ease;
+    display:block;
+}
+
 .product-card:hover .product-image img{transform:scale(1.1)}
 .product-badge{position:absolute;top:12px;right:12px;background:var(--primary);color:var(--dark);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;z-index:2}
 .product-badge.car-badge{background:var(--dark);color:#fff}
-.product-info{padding:24px}
+.product-info{padding:24px;flex:1;display:flex;flex-direction:column}
 .product-name{font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px}
 .product-desc{color:var(--gray);font-size:14px;line-height:1.5;margin-bottom:16px}
 .product-specs{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
 .product-spec{background:rgba(0,212,255,0.1);color:var(--dark);padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600}
 .product-price{font-size:26px;font-weight:800;color:var(--primary);margin-bottom:16px}
-.product-cta{width:100%;background:var(--primary);color:var(--dark);padding:12px;border-radius:8px;font-weight:600;border:none;transition:all var(--transition-base)}
+.product-cta{width:100%;background:var(--primary);color:var(--dark);padding:12px;border-radius:8px;font-weight:600;border:none;transition:all var(--transition-base);margin-top:auto}
 .product-cta:hover{background:var(--primary-dark);transform:translateY(-2px)}
 
 /* === PAGE HERO === */
