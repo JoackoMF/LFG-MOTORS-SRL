@@ -56,9 +56,12 @@ button{font-family:inherit;cursor:pointer}
 @media(max-width:968px){
 .mobile-menu-btn{display:flex}
 .nav{position:fixed;top:80px;left:0;right:0;background:#fff;max-height:0;overflow:hidden;transition:max-height var(--transition-base);box-shadow:var(--shadow-lg)}
-.nav.active{max-height:500px;padding:24px 0}
-.nav-list{flex-direction:column;gap:0;width:100%}
-.nav-link{padding:16px 24px;width:100%}
+.nav.active{max-height:500px;padding:16px 0}
+.nav-list{flex-direction:column;gap:4px;width:100%;padding:0 12px}
+.nav-link{padding:14px 16px;width:100%;border-radius:10px;display:block}
+.nav-link::after{display:none}
+.nav-link:hover{background:rgba(0,212,255,0.08);color:var(--primary)}
+.nav-link.active{background:rgba(0,212,255,0.12);color:var(--primary);border-left:4px solid var(--primary);padding-left:12px;font-weight:700}
 }
 
 /* === HERO === */
@@ -114,8 +117,10 @@ animation:heroFloat 20s ease-in-out infinite}
 .product-image{
     position:relative;
     width:100%;
-    height:250px; /* Altura fija para que todas sean iguales */
-    background:var(--gray-lighter);
+    height:250px;
+    background:linear-gradient(90deg,var(--gray-lighter) 25%,#edf2f7 50%,var(--gray-lighter) 75%);
+    background-size:200% 100%;
+    animation:skeleton 1.5s ease-in-out infinite;
     overflow:hidden;
     flex-shrink:0;
 }
@@ -123,7 +128,7 @@ animation:heroFloat 20s ease-in-out infinite}
 .product-image img{
     width:100%;
     height:100%;
-    object-fit:cover; /* Ajuste perfecto sin deformar */
+    object-fit:cover;
     object-position:center;
     transition:transform 0.5s ease;
     display:block;
@@ -134,12 +139,13 @@ animation:heroFloat 20s ease-in-out infinite}
 .product-badge.car-badge{background:var(--dark);color:#fff}
 .product-info{padding:24px;flex:1;display:flex;flex-direction:column}
 .product-name{font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px}
-.product-desc{color:var(--gray);font-size:14px;line-height:1.5;margin-bottom:16px}
+.product-desc{color:var(--gray);font-size:14px;line-height:1.5;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .product-specs{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
 .product-spec{background:rgba(0,212,255,0.1);color:var(--dark);padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600}
 .product-price{font-size:26px;font-weight:800;color:var(--primary);margin-bottom:16px}
 .product-cta{width:100%;background:var(--primary);color:var(--dark);padding:12px;border-radius:8px;font-weight:600;border:none;transition:all var(--transition-base);margin-top:auto}
 .product-cta:hover{background:var(--primary-dark);transform:translateY(-2px)}
+.product-cta:focus-visible{outline:3px solid var(--primary-dark);outline-offset:2px}
 
 /* === PAGE HERO === */
 .page-hero{background:linear-gradient(135deg,#1a202c 0%,#2d3748 100%);color:#fff;padding:80px 0;text-align:center}
@@ -224,16 +230,17 @@ animation:heroFloat 20s ease-in-out infinite}
 
 /* === ANIMATIONS === */
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes skeleton{0%{background-position:200% 0}100%{background-position:-200% 0}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes modalSlideUp{from{opacity:0;transform:translateY(50px) scale(0.9)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 @keyframes pulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 32px rgba(37,211,102,0.8)}}
 
 /* Scroll Animations */
-.fade-in{animation:fadeIn 0.8s ease}
+.fade-in{animation:fadeIn 0.8s ease both}
 .fade-in-section{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
 .fade-in-section.visible{opacity:1;transform:translateY(0)}
-.slide-up{animation:fadeInUp 0.8s ease}
+.slide-up{animation:fadeInUp 0.8s ease both}
 .slide-up.delay-1{animation-delay:0.2s}
 .slide-up.delay-2{animation-delay:0.4s}
 
